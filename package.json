@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "test": "jest",
     "lint": "npm run lint:styles",
+    "lint:styles:fix": "stylelint \"src/**/*.scss\" --fix",
     "lint:styles": "stylelint \"src/**/*.scss\""
   },
   "devDependencies": {
