@@ -1,0 +1,33 @@
+@use 'sass:math';
+@use 'variables';
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+      @return math.div($number, ($number * 0 + 1));
+    }
+
+    @return $number;
+}
+
+@function rem-calc($value) {
+    $rem-value: math.div(strip-unit($value), 16) + rem; 
+
+    @return $rem-value;
+}
+
+@function color($name, $category: null, $nested-name: null) {
+    // Retrieve a first level color
+    @if not $category and not $nested-name {
+        @return map-get(variables.$colors, $name);
+    }
+
+    // Retrieve a second level color
+    @if $category != null and $nested-name == null {
+        @return map-get(map-get(variables.$colors, $name), $category);
+    }
+
+    // Retrieve a third level color
+    @else if $category != null and $nested-name != null {
+        @return map-get(map-get(map-get(variables.$colors, $name), $category), $nested-name);
+    }
+}

@@ -1,0 +1,22 @@
+@use '../utils';
+
+.wrapper {
+    max: {
+        width: utils.rem-calc(1336px);
+    }
+    padding: {
+        inline: {
+            start: 2vw;
+            end: 2vw;
+        }
+    }
+}
+
+.section {
+    margin: {
+        block: {
+            start: utils.rem-calc(32px);
+            end: utils.rem-calc(32px);
+        }
+    }
+}
